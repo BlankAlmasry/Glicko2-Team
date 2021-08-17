@@ -25,7 +25,7 @@ class Glicko2
         $this->transformer = new Transformer;
     }
 
-    public function calculateRating(RatingInterface $rating, array $results): RatingInterface
+    public function calculateRating(RatingInterface $rating, array $results): array
     {
         $normalizedRating = $this->transformer->normalizeRating($rating);
         $normalizedResults = [];
@@ -92,4 +92,46 @@ class Glicko2
     {
         return $v * array_sum(array_map(function($r) { return $r['g'] * ($r['s'] - $r['E']); }, $funcResults));
     }
+
+
+    public static function match(array $team1, array $team2, int $int1, int $int2, $updateMethod = "compositeOpponent")
+    {
+
+       return self::$updateMethod($team1, $team2, $int1, $int2);
+
+
+    }
+
+    public static function compositeOpponent($team1, $team2, $int1, $int2)
+    {
+        $team1Average = [0,1];
+        foreach ($team1 as $team){
+            $team1Average[0] += $team->getRating()/count($team1);
+            $team1Average[1] += $team->getRatingDeviation()/count($team1);
+        }
+       $team2Average = [0,1];
+        foreach ($team1 as $team){
+            $team2Average[0] += $team->getRating()/count($team1);
+            $team2Average[1] += $team->getRatingDeviation()/count($team1);
+        }
+        $glicko = new self;
+
+        $team1Result = array_map(function ($team) use ($team2Average, $int1, $glicko) {
+            return $glicko->calculateRating($team, [new Result(new Rating(...$team2Average), $int1)]);
+        },$team1);
+        $team2Result = array_map(function ($team) use ($team1Average, $int2, $glicko) {
+            return $glicko->calculateRating($team, [new Result(new Rating(...$team1Average), $int2)]);
+        },$team2);
+        return [$team1Result,$team2Result];
+    }
+
+    public static function compositeTeam($team1, $team2, $int1, $int2)
+    {
+        //WIP
+    }
+    public static function individual($team1, $team2, $int1, $int2)
+    {
+        //WIP
+    }
+
 }

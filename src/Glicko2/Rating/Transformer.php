@@ -8,8 +8,8 @@ class Transformer
         return new Rating(($rating->getRating() - 1500) / 173.7178, $rating->getRatingDeviation() / 173.7178, $rating->getVolatility());
     }
 
-    public function standardizeRating(RatingInterface $rating): RatingInterface
+    public function standardizeRating(RatingInterface $rating): array
     {
-        return new Rating($rating->getRating() * 173.7178 + 1500, $rating->getRatingDeviation() * 173.7178, $rating->getVolatility());
+        return [$rating->getRating() * 173.7178 + 1500, $rating->getRatingDeviation() * 173.7178, $rating->getVolatility()];
     }
 }

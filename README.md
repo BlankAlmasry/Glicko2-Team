@@ -1,7 +1,7 @@
-# php-glicko2
+#Glicko2-Team
 
 
-A PHP glicko2 implementation with an easy to use interface.
+A PHP glicko2 Composite Opponent implementation
 
 The repository is build on https://github.com/diegobanos/php-glicko2
 

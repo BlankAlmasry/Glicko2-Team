@@ -1,11 +1,11 @@
 <?php
-namespace Diegobanos\Glicko2;
+namespace Blankalmasry\Glicko2;
 
-use Diegobanos\Glicko2\Rating\Rating;
-use Diegobanos\Glicko2\Rating\RatingInterface;
-use Diegobanos\Glicko2\Rating\Transformer;
-use Diegobanos\Glicko2\Result\Result;
-use Diegobanos\Glicko2\Volatility\Calculator;
+use Blankalmasry\Glicko2\Rating\Rating;
+use Blankalmasry\Glicko2\Rating\RatingInterface;
+use Blankalmasry\Glicko2\Rating\Transformer;
+use Blankalmasry\Glicko2\Result\Result;
+use Blankalmasry\Glicko2\Volatility\Calculator;
 
 class Glicko2
 {

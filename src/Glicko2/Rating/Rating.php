@@ -1,5 +1,5 @@
 <?php
-namespace Diegobanos\Glicko2\Rating;
+namespace Blankalmasry\Glicko2\Rating;
 
 class Rating implements RatingInterface
 {

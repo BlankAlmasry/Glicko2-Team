@@ -1,7 +1,7 @@
 <?php
-namespace Diegobanos\Glicko2\Result;
+namespace Blankalmasry\Glicko2\Result;
 
-use Diegobanos\Glicko2\Rating\RatingInterface;
+use Blankalmasry\Glicko2\Rating\RatingInterface;
 
 interface ResultInterface
 {

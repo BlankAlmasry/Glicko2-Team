@@ -1,5 +1,5 @@
 <?php
-namespace Diegobanos\Glicko2\Volatility;
+namespace Blankalmasry\Glicko2\Volatility;
 
 class Calculator
 {
